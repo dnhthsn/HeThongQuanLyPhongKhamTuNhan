@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html xmlns=http://www.w3.org/1999/xhtml xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+
+<head>
+	<title>PHONG KHAM TU NHAN</title>
+	<style>
+		a {
+			text-decoration: none;
+		}
+		body {
+			background-image: url(/images/backhospital.jpg);
+			background-size: cover;
+		}
+	</style>
+</head>
+
+
+
+<body>
+	<div align=center>
+		<h3><a href="/"><img style="mix-blend-mode: multiply;" th:src="@{/images/home.png}" /></a></h3>
+		<h1>THÊM Y TÁ</h1>
+		<form method="POST" th:action="@{/luu_Yta}" th:object="${yta}">
+			<table>
+				<tr>
+					<td>CMT</td>
+					<td>
+						<input type="text" th:field="*{cmt}" />
+					</td>
+					<td>
+						<p style="color: red;" th:if="${#fields.hasErrors('cmt')}" th:errors="*{cmt}">
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td>Tên y tá</td>
+					<td>
+						<input type="text" th:field="*{tenyt}" />
+					</td>
+					<td>
+						<p style="color: red;" th:if="${#fields.hasErrors('tenyt')}" th:errors="*{tenyt}">
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td>Trình độ</td>
+					<td>
+						<input type="text" th:field="*{trinhdo}" />
+					</td>
+					<td>
+						<p style="color: red;" th:if="${#fields.hasErrors('trinhdo')}" th:errors="*{trinhdo}">
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td>Thâm niên</td>
+					<td>
+						<input type="text" th:field="*{thamnien}" />
+					</td>
+					<td>
+						<p style="color: red;" th:if="${#fields.hasErrors('thamnien')}" th:errors="*{thamnien}">
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td>Ngày sinh (dd/mm/yyyy)</td>
+					<td>
+						<input type="text" th:field="*{ngaysinh}" />
+					</td>
+					<td>
+						<p style="color: red;" th:if="${#fields.hasErrors('ngaysinh')}" th:errors="*{ngaysinh}">
+						</p>
+					</td>
+
+				</tr>
+				<tr>
+					<td>Địa chỉ</td>
+					<td>
+						<input type="text" th:field="*{diachi}" />
+					</td>
+					<td>
+						<p style="color: red;" th:if="${#fields.hasErrors('diachi')}" th:errors="*{diachi}">
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td>Số điện thoại</td>
+					<td>
+						<input type="text" th:field="*{sdt}" />
+					</td>
+					<td>
+						<p style="color: red;" th:if="${#fields.hasErrors('sdt')}" th:errors="*{sdt}">
+						</p>
+					</td>
+				</tr>
+			</table>
+			</br>
+			<div>
+				<button type="submit">Xác nhận thêm</button>
+			</div>
+
+		</form>
+		</br>
+		</br>
+		</br>
+		<h3><a href="/GDQL_Yta"><img style="mix-blend-mode: multiply;" th:src="@{/images/arrow.png}" /></a></h3>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html xmlns=http://www.w3.org/1999/xhtml xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+
+<head>
+	<title>PHÒNG KHÁM TƯ NHÂN</title>
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid black;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		.icon {
+			margin-left: 10px;
+		}
+
+
+		td {
+			padding: 5px;
+		}
+
+		body {
+			background-image: url(/images/backhospital.jpg);
+			background-size: cover;
+
+		}
+
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+
+		.menu-bar {
+			text-align: center;
+			background-image: linear-gradient(white, rgb(0, 128, 255));
+		}
+
+		.menu-bar ul {
+			display: inline-flex;
+			list-style: none;
+			color: aqua;
+		}
+
+		.menu-bar ul li {
+			width: 120px;
+			margin: 20px;
+			padding: 10px;
+		}
+
+		.active,
+		.menu-bar ul li:hover {
+			background: rgb(255, 255, 255, 0.5);
+			border-radius: 10px;
+		}
+
+		.menu-bar .fas {
+			margin-right: 8px;
+		}
+
+		.drop-down {
+			display: none;
+		}
+		
+		.drop-down::before{
+			content:"";
+			display: block;
+			position: absolute;
+			background-color: transparent;
+			z-index: 2;
+			top: -20px;
+			height: 20px;
+			width: 180px;
+		}
+
+		.menu-bar ul li:hover .drop-down {
+			display: block;
+			position: absolute;
+			background: rgb(0, 128, 255);
+			margin-top: 50px;
+			margin-left: -45px;
+			border-radius: 5px;
+			box-shadow: 2px 3px 8px #eee;
+			z-index: 2;
+		}
+		.menu-bar ul li:hover .drop-down ul{
+			display: block;
+			margin: 10px;
+		}
+		.menu-bar ul li:hover .drop-down ul li{
+			width: 130px;
+			padding: 10px;
+			border-bottom: 1px dotted #fff;
+			background: transparent;
+			border-radius: 0;
+			text-align: left;
+		}
+		.menu-bar ul li:hover .drop-down ul li:last-child{
+			border-bottom: none;
+		}
+		.menu-bar ul li:hover .drop-down ul li a:hover{
+			color: white;
+		}
+		
+		.home {
+			display: block;
+			height: 50px;
+		}
+		.fas {
+			display: block;
+		}
+		
+		.nav-button {
+			text-align: center;
+			display: inline-flex;
+		}
+		
+		.ql-text {
+			display: block;
+			text-align: left;
+		}
+		
+		.line {
+			border-right: 1px solid white; height: 100px; margin-top: 10px; opacity: 0.8;
+		}
+		
+	</style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+	<div class="menu-bar">
+		<ul>
+			<li class="active">
+				<h3><a href="/" class="home"><i class="fas fa-home"></i> Home</a></h3>
+			</li>
+			<div class="line">
+			</div>
+			<li>
+				<h3><a href="/GDQL_Bacsi" class="nav-button"><i class="fas fa-user-md"></i><span class="ql-text">Quản lý bác sĩ</span></a></h3>
+			</li>
+			<div class="line">
+			</div>
+			<li>
+				<h3><a href="/GDQL_Yta" class="nav-button"><i class="fas fa-user-nurse"></i><span class="ql-text">Quản lý y tá</span></a></h3>
+			</li>
+			<div class="line">
+			</div>
+			<li>
+				<h3><a href="/GDQL_Thuoc" class="nav-button"><i class="fas fa-prescription-bottle-alt"></i><span class="ql-text">Quản lý thuốc</span></a></h3>
+			</li>
+			<div class="line">
+			</div>
+			<li>
+				<h3><a href="/GDQL_Benhnhan" class="nav-button"><i class="fas fa-user-injured"></i><span class="ql-text">Quản lý bệnh nhân</span></a></h3>
+			</li>
+			<div class="line">
+			</div>
+			<li>
+				<h3><a href="/GDQL_Hosokham" class="nav-button"><i class="fas fa-file-medical-alt"></i><span class="ql-text">Quản lý hồ sơ khám</span></a></h3>
+			</li>
+			<div class="line">
+			</div>
+			<li>
+				<h3><a href="/GDQL_Benh" class="nav-button"><i class="fas fa-viruses"></i><span class="ql-text">Quản lý bệnh</span></a></h3>
+			</li>
+			<div class="line">
+			</div>
+			<li>
+				<h3><a href="#" class="nav-button"><i class="fas fa-box-open"></i><span class="ql-text"> Thống kê</span></a></h3>
+				<div class="drop-down">
+					<ul>
+						<li><h3><a href="/thongkebenh"> Bệnh trong tháng</a></h3></li>
+						<li><h3><a href="/tinhluongBacsi">Lương Bác sĩ</a></h3></li>
+						<li><h3><a href="/tinhluongYta">Lương Y tá</a></h3></li>
+					</ul>
+				</div>
+			</li>
+			<div class="line">
+			</div>
+			
+		</ul>
+	</div>
+	</br>
+	</br>
+	</br>
+	</br>
+	<div align="center">
+		<h1>HỆ THỐNG QUẢN LÝ PHÒNG KHÁM TƯ NHÂN</h1>
+		</br>
+		</br>
+		<div>
+			<img style="mix-blend-mode: multiply; opacity: 0.5;" th:src="@{/images/cross.png}" />
+		</div>
+	</div>
+</body>
+
+</html>
