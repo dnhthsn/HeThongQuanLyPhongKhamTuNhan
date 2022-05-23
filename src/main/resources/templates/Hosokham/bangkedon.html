@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html xmlns=http://www.w3.org/1999/xhtml xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+
+<head>
+	<title>PHONG KHAM TU NHAN</title>
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			background:  rgb(192, 192, 192);
+		}
+		a {
+			text-decoration: none;
+		}
+		td{
+			padding: 5px;
+		}
+		body {
+			background-image: url(/images/backhospital.jpg);
+			background-size: cover;
+		}
+		td {
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+<div align=center>
+	<h3><a href="/"><img style="mix-blend-mode: multiply;" th:src="@{/images/home.png}" /></a></h3>
+	<h1>THUỐC ĐƯỢC SỬ DỤNG</h1>
+	</br>
+	
+	</br>
+	
+	<table style="width: 1000px">
+		<tr>
+			<td>Tên thuốc</td>
+			<td>Giá tiền(VNĐ)</td>
+			<td>Loại</td>
+		</tr>
+		<tr th:each="thuoc : ${listThuoc}">
+			<td th:text="${thuoc.tenthuoc}"></td>
+			<td th:text="${thuoc.giatien}"></td>
+			<td th:text="${thuoc.loai}"></td>
+			
+		</tr>
+	</table>
+	</br>
+	</br>
+	<h3><a href="/GDQL_Hosokham"><img style="mix-blend-mode: multiply;" th:src="@{/images/arrow.png}" /></a></h3>
+</div>
+
+</body>
+
+</html>

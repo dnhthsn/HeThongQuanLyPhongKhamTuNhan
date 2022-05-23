@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html xmlns=http://www.w3.org/1999/xhtml xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+
+<head>
+	<title>PHONG KHAM TU NHAN</title>
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			background:  rgb(192, 192, 192);
+		}
+		a {
+			text-decoration: none;
+		}
+		td{
+			padding: 5px;
+		}
+		body {
+			background-image: url(/images/backhospital.jpg);
+			background-size: cover;
+		}
+		td {
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+<div align=center>
+	<h3><a href="/"><img style="mix-blend-mode: multiply;" th:src="@{/images/home.png}" /></a></h3>
+	<h1>QUẢN LÝ BỆNH</h1>
+	<!--Code ô tìm kiếm-->
+	<form th:action="@{/GDQL_Benh}">
+		<span>
+			<input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required placeholder="Nhập tên bệnh"/>
+			<input type="submit" value="Tìm Kiếm" />
+			<input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+		</span>
+	</form>
+	</br>
+	</br>
+	<div><a href="/them_Benh"><button> Thêm bệnh mới</button></a></div>
+	
+	</br>
+	
+	<table style="width: 1000px">
+		<tr>
+			<td>Tên bệnh</td>
+			<td>Mô tả</td>
+			<td>Loại bệnh</td>
+			<td>Hành động</td>
+		</tr>
+		
+		<!-- <tr>
+			<td>Dị ứng thời tiết</td>
+			<td>Phát ban đỏ</td>
+			<td>Da liễu</td>
+			
+			<td>
+				<div><a href="/xoaBenh"><button> Xóa thông tin bệnh</button></a></div>
+				<div><a href="/suaBenh"><button> Sửa thông tin bệnh</button></a></div>
+			</td>
+		</tr>
+		-->
+		<tr th:each="benh : ${listBenh}">
+			<td th:text="${benh.tenbenh}"></td>
+			<td th:text="${benh.mota}"></td>
+			<td th:text="${benh.loaibenh}"></td>
+			
+			<td>
+				<h3><a th:href="@{'/sua_Benh/' + ${benh.tenbenh}}"><button>Sửa thông tin bệnh</button></a></h3>
+				<h3><a th:href="@{'/xoa_Benh/' + ${benh.tenbenh}}"><button>Xóa thông tin bệnh</button></a></h3>
+			</td>
+			
+		</tr>
+	</table>
+	</br>
+	
+</div>
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/GDQL_Benh}]]";
+    }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html xmlns=http://www.w3.org/1999/xhtml xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+
+<head>
+	<title>PHONG KHAM TU NHAN</title>
+	<style>
+		a {
+			text-decoration: none;
+		}
+		body {
+			background-image: url(/images/backhospital.jpg);
+			background-size: cover;
+		}
+	</style>
+</head>
+
+<body>
+	<div align=center>
+		<h3><a href="/"><img style="mix-blend-mode: multiply;" th:src="@{/images/home.png}" /></a></h3>
+		<h1>SỬA BÁC SĨ</h1>
+		<form method="POST" th:action="@{/luu_sua_Bacsi}" th:object="${bacsi}">
+			<table cellspacing="5" cellpadding="5">
+				<tr>
+					<td>Mã bác sĩ:</td>
+					<td><input type="text" th:field="*{mabs}" readonly="readonly"
+							style="background-color: rgb(129, 140, 115);">
+					</td>
+				</tr>
+				<tr>
+					<td>CMT</td>
+					<td>
+						<input type="text" th:field="*{cmt}" />
+					</td>
+					<td>
+						<p style="color: red;" th:if="${#fields.hasErrors('cmt')}" th:errors="*{cmt}">Tên bác sĩ Error</p>
+					</td>
+				</tr>
+				<tr>
+					<td>Tên bác sĩ</td>
+					<td>
+						<input type="text" th:field="*{tenbs}" />
+
+					</td>
+					<td>
+						<p style="color: red;" th:if="${#fields.hasErrors('tenbs')}" th:errors="*{tenbs}">Tên bác sĩ Error</p>
+					</td>
+				</tr>
+				<tr>
+					<td>Ngày sinh (dd/mm/yyyy)</td>
+					<td>
+						<input type="text" th:field="*{ngaysinh}" />
+					</td>
+					<td>
+						<p style="color: red;" th:if="${#fields.hasErrors('ngaysinh')}" th:errors="*{ngaysinh}">Ngày sinh Error</p>
+					</td>
+
+				</tr>
+				<tr>
+					<td>Địa chỉ</td>
+					<td>
+						<input type="text" th:field="*{diachi}" />
+					</td>
+					<td>
+						<p style="color: red;" th:if="${#fields.hasErrors('diachi')}" th:errors="*{diachi}">Ngày sinh Error</p>
+					</td>
+				</tr>
+				<tr>
+					<td>Bậc nghề</td>
+					<td>
+						<input type="text" th:field="*{bacnghe}" />
+					</td>
+					<td>
+						<p style="color: red;" th:if="${#fields.hasErrors('bacnghe')}" th:errors="*{bacnghe}">Ngày sinh Error</p>
+					</td>
+				</tr>
+				<tr>
+					<td>Thâm niên</td>
+					<td>
+						<input type="text" th:field="*{thamnien}" />
+					</td>
+					<td>
+						<p style="color: red;" th:if="${#fields.hasErrors('thamnien')}" th:errors="*{thamnien}">Ngày sinh Error</p>
+					</td>
+				</tr>
+				<tr>
+					<td>Trình độ đào tạo</td>
+					<td>
+						<input type="text" th:field="*{trinhdodaotao}" />
+					</td>
+					<td>
+						<p style="color: red;" th:if="${#fields.hasErrors('trinhdodaotao')}" th:errors="*{trinhdodaotao}">Ngày sinh Error</p>
+					</td>
+				</tr>
+				<tr>
+					<td>Chuyên môn</td>
+					<td>
+						<input type="text" th:field="*{chuyenmon}" />
+					</td>
+					<td>
+						<p style="color: red;" th:if="${#fields.hasErrors('chuyenmon')}" th:errors="*{chuyenmon}">Ngày sinh Error</p>
+					</td>
+				</tr>
+			</table>
+
+			</br>
+			<div>
+				<button type="submit">Xác nhận sửa</button>
+			</div>
+		</form>
+
+		<h3><a href="/GDQL_Bacsi"><img style="mix-blend-mode: multiply;" th:src="@{/images/arrow.png}" /></a></h3>
+	</div>
+</body>
+
+</html>

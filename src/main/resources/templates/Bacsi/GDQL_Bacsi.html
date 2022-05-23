@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html xmlns=http://www.w3.org/1999/xhtml xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+
+<head>
+	<title>PHONG KHAM TU NHAN</title>
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			background: rgb(192, 192, 192);
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		td {
+			padding: 5px;
+		}
+
+		td {
+			text-align: center;
+		}
+
+		body {
+			background-image: url(/images/backhospital.jpg);
+			background-size: cover;
+		}
+	</style>
+</head>
+
+
+
+<body>
+	<div align=center>
+		<h3><a href="/"><img style="mix-blend-mode: multiply;" th:src="@{/images/home.png}" /></a></h3>
+		<h1>QUẢN LÝ BÁC SĨ</h1>
+		<form th:action="@{/GDQL_Bacsi}">
+			<span>
+				<input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required
+					placeholder="Nhập tên bác sĩ" />
+				<input type="submit" value="Tìm Kiếm" />
+				<input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+			</span>
+		</form>
+
+		<h3><a href="/them_Bacsi"><button>Thêm bác sĩ</button></a></h3>
+
+		</br>
+		<table style="width: 1000px">
+			<thead>
+				<tr>
+					<td>Mã bác sĩ</td>
+					<td>CMT</td>
+					<td>Tên bác sĩ</td>
+					<td>Ngày sinh</td>
+					<td>Địa chỉ</td>
+					<td>Bậc nghề</td>
+					<td>Thâm niên</td>
+					<td>Trình độ đào tạo</td>
+					<td>Chuyên môn</td>
+					<td>Hành động</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="bacsi : ${listBacSi}">
+					<td th:text="${bacsi.mabs}"></td>
+					<td th:text="${bacsi.cmt}"></td>
+					<td th:text="${bacsi.tenbs}"></td>
+					<td th:text="${bacsi.ngaysinh}"></td>
+					<td th:text="${bacsi.diachi}"></td>
+					<td th:text="${bacsi.bacnghe}"></td>
+					<td th:text="${bacsi.thamnien}"></td>
+					<td th:text="${bacsi.trinhdodaotao}"></td>
+					<td th:text="${bacsi.chuyenmon}"></td>
+					<td>
+						<h3><a th:href="@{'/sua_Bacsi/' + ${bacsi.mabs}}"><button>Sửa bác sĩ</button></a></h3>
+						<h3><a th:href="@{'/xoa_Bacsi/' + ${bacsi.mabs}}"><button>Xóa bác sĩ</button></a></h3>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+
+
+
+	</div>
+	<script type="text/javascript">
+		function clearSearch() {
+			window.location = "[[@{/GDQL_Bacsi}]]";
+		}
+	</script>
+</body>
+
+</html>

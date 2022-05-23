@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html xmlns=http://www.w3.org/1999/xhtml xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+
+<head>
+	<title>PHONG KHAM TU NHAN</title>
+	<style>
+		a {
+			text-decoration: none;
+		}
+
+		select {
+			width: 170px;
+		}
+		body {
+			background-image: url(/images/backhospital.jpg);
+			background-size: cover;
+		}
+		td {
+			text-align: center;
+		}
+	</style>
+</head>
+
+
+
+<body>
+	<div align=center>
+		<h3><a href="/"><img style="mix-blend-mode: multiply;" th:src="@{/images/home.png}" /></a></h3>
+		<h1>SỬA HỒ SƠ KHÁM</h1>
+		<form method="POST" th:action="@{/luu_sua_Hosokham}" th:object="${hsk}" name = "form1">
+			<table cellspacing="5" cellpadding="5">
+				<tr align="right">
+					<td>Mã hồ sơ khám:</td>
+					<td><input type="text" th:field="*{mahsk}" readonly="readonly"
+							style="background-color: rgb(129, 140, 115);">
+					</td>
+				</tr>
+				<tr align="right">
+					<td>Trạng thái:</td>
+					<td>
+						<select th:field="*{trangthai}">
+							<option value="Đã khỏi">
+								Đã khỏi
+							</option>
+							<option value="Chưa khỏi">
+								Chưa khỏi
+							</option>
+						</select>
+					</td>
+				</tr>
+				<tr align="right">
+					<td>Mã bác sĩ:</td>
+					<td>
+						<select th:field="*{mabs}">
+							<option th:each="bacsi : ${listBacSi}" th:value="${bacsi.mabs}" th:text="${bacsi.mabs}">
+							</option>
+						</select>
+					</td>
+				</tr>
+				<tr align="right">
+					<td>Mã y tá:</td>
+					<td>
+						<select th:field="*{mayt}">
+							<option th:each="yta : ${listYta}" th:value="${yta.mayt}" th:text="${yta.mayt}"></option>
+						</select>
+					</td>
+				</tr>
+				<tr align="right">
+					<td>Mã bệnh nhân:</td>
+					<td>
+						<select th:field="*{mabn}" id="mabenhnhan">
+							<option th:each="bn : ${listbn}" th:value="${bn.mabn}" th:text="${bn.mabn}"></option>
+						</select>
+					</td>
+				</tr>
+				<tr align="right">
+					<td>Ngày vào viện (dd/mm/yyyy):</td>
+					<td> <input type="text" th:field="*{ngayvaovien}">
+					</td>
+					<td>
+						<p style="color: red;" th:if="${#fields.hasErrors('ngayvaovien')}" th:errors="*{ngayvaovien}">
+						</p>
+					</td>
+				</tr>
+				<tr align="right">
+					<td>Ngày ra viện (dd/mm/yyyy):</td>
+					<td> <input type="text" th:field="*{ngayravien}">
+					</td>
+					<td>
+						<p style="color: red;" th:if="${#fields.hasErrors('ngayravien')}" th:errors="*{ngayravien}">
+						</p>
+					</td>
+				</tr>
+				<tr align="right">
+					<td>Tên bệnh:</td>
+					<td> <select th:field="*{tenbenh}">
+							<option th:each="benh : ${listBenh}" th:value="${benh.tenbenh}" th:text="${benh.tenbenh}">
+							</option>
+						</select>
+					</td>
+				</tr>
+				<tr align="right">
+					<td>Tổng giá tiền:</td>
+					<td> <input id="giatien" type="text" th:field="*{tonggiatien}" readonly="readonly"
+							style="background-color: rgb(129, 140, 115);">
+					</td>
+				</tr>
+				<tr align="right">
+					<td>Mã lần khám của bệnh:</td>
+					<td> <input type="text" th:field="*{malankham}">
+					</td>
+				</tr>
+			</table>
+			<h1>CHỌN THUỐC</h1>
+			<div th:each="thuoc : ${listThuoc}" align="left" style="margin-left: 600px; font-size: 20px;">
+				<input name="thuoc" type="checkbox" th:onclick="javascript:tongtien()"
+					th:value="${thuoc.tenthuoc}" th:data-value="${thuoc.giatien}"/> <span th:text="${thuoc.tenthuoc}"></span><br />
+			</div>
+			</br>
+			<div>
+				<button type="submit">Xác nhận sửa</button>
+			</div>
+		</form>
+		</br>
+		</br>
+		</br>
+		<h3><a href="/GDQL_Hosokham"><img style="mix-blend-mode: multiply;" th:src="@{/images/arrow.png}" /></a></h3>
+
+	</div>
+	<script type="text/javascript">
+
+		function tongtien() {
+			var tongtien = 200000;
+			for (var i = 0; i < document.form1.thuoc.length; i++) {
+				if (document.form1.thuoc[i].checked) {
+					tongtien = tongtien + parseInt(document.form1.thuoc[i].dataset.value);
+					console.log(document.form1.thuoc[i].dataset.value);
+				}
+			}
+			document.getElementById("giatien").value=tongtien;
+			}
+	</script>
+</body>
+
+</html>

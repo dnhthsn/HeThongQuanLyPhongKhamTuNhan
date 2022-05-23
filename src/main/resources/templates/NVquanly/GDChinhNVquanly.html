@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html xmlns=http://www.w3.org/1999/xhtml xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+
+<head>
+	<title>PHONG KHAM TU NHAN</title>
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			background: rgb(192, 192, 192);
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		td {
+			padding: 5px;
+		}
+
+		body {
+			background-image: url(/images/backhospital.jpg);
+			background-size: cover;
+		}
+	</style>
+</head>
+
+<body>
+	<div align=center>
+		<h3><a href="/"><img style="mix-blend-mode: multiply;" th:src="@{/images/home.png}" /></a></h3>
+		<h1>QUẢN LÝ NÂNG CAO</h1>
+		<h3><a href="/thongkebenh"> Thống kê bệnh theo tháng</a></h3>
+		<h3><a href="/tinhluongBacsi"> Tính lương bác sĩ</a></h3>
+		<h3><a href="/tinhluongYta"> Tính lương y tá</a></h3>
+	</div>
+</body>
+
+</html>
